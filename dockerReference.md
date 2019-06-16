@@ -22,6 +22,8 @@
   docker inspect <friendly-name| container-id>  // more details of the running container
   docker logs <friendly-name| container-id>     // logs, the container wrote to stderr/stdout
   docker images                                 // list os all images on the host
+  docker ps --filter "label=user=scrapbook"
+  docker images --filter "label=vendor=someVendor"
   ```
 #### 1.5 PERSIST data external to the container as it gets destroyed 
   Containers are designed to be stateless.Binding of volumes using options.Docker uses $PWD as a placeholder for the current directory.
@@ -239,6 +241,49 @@ This allows us to access volumes from other containers without having to be conc
     > docker inspect --format '{{ .HostConfig.LogConfig }}' redis-none
 
 ### 11.0 Scenario : PERSISTING DATA USING VOLUMES
+
+
+### 12.0 Scenario : UPTIME for CONTAINER
+   Like processes, containers can crash.Need to know hot to auto-restart if containers cash unexpectedly.
+   Docker considers any containers to exit with a non-zero exit code to have crashed. By default a crashed container will remain stopped.
+   Docker can automatically retry to launch the Docker a specific number of times before it stops trying.
+   
+ #### Restart on Failure ( attempt n times )
+    > docker run -d --name restartThrice --restart=on-failure:3 scrapbook/docker-restart-example
+    
+ #### Restart Always
+    > docker run -d --name restartAlways --restart=always scrapbook/docker-restart-example   
+    
+### 13.0 Scenario : METADATA and LABELS ( -l label=value )
+  
+#### Single Label
+   
+    > docker run -l user=21345 -d redis
+ 
+#### External File with multi key value labels
+  
+    > echo 'user=1234' >> labels && echo 'role=cache' >> labels
+    > docker run --label-file=labels -d redis
+    
+#### Labeling in docker IMAGE
+  Labeling in image files is done in the Dockerfile
+  
+    > LABEL vendor=someValue    
+
+#### Inspect Labels ( docker inspect )
+By providing the running container's friendly name or hash id, you can query all of it's metadata.
+Or by using the -f option to filter the json    
+    
+    > docker inspect rd
+    > docker inspect -f "{{json .Config.Labels }}" rd
+    
+Inspect Lables of an IMAGE --> use ContainerConfig instead of Config
+   
+    > docker inspect -f "{{ json .ContainerConfig.Labels }}" example-tag
+
+    
+        
+  
   
  
    
