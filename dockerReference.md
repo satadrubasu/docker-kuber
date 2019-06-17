@@ -24,7 +24,13 @@
   docker images                                 // list os all images on the host
   docker ps --filter "label=user=scrapbook"
   docker images --filter "label=vendor=someVendor"
+  docker ps --format '{{.Names}} container is using {{.Image}} image'
+  docker ps --format 'table {{.Names}}\t{{.Image}}'
+  docker ps -q | xargs docker inspect --format '{{.Id }} - {{ .Name }} - {{ .NetworkSettings.IPAddress }}'
   ```
+  -- format uses the go Template which can also be used in  docker inspect
+  contianer ids from docker ps can be piped into docker inspect
+  
 #### 1.5 PERSIST data external to the container as it gets destroyed 
   Containers are designed to be stateless.Binding of volumes using options.Docker uses $PWD as a placeholder for the current directory.
   option -v <host-dir>:<container-dir>
@@ -355,12 +361,52 @@ While nginx-proxy automatically creates and configures NGINX for us, if you're i
  
    5. Docker-Compose can also __SCALE__ number of containers  
        
-         > docker-compose scale web=3
-         > docker-compose scale web=1
+          > docker-compose scale web=3
+          > docker-compose scale web=1
          
    6. Docker-compose __STOP__
        
           > docker-compose stop
           > docker-compose rm
           
-
+### 16.0 DOCKER STATS  ( __docker stats nginx__ )
+  Built-In Metrics provided by Docker to give additional visibility to the running container.
+  
+    > docker ps -q | xargs docker stats
+    
+### 17.0 SCENARIO : MULTI STAGED BUILDS for optimizing Docker Image
+   The first stage can build the GoLang binary using a large Docker Image as the base.In the second stage , the newly built binary can be deployed using a much smaller base image.*Read more on internet in need *
+    
+### 18.0 SCENARIO : DOCKER SWARM MODE ( Protect port 2377 from external traffic )
+Three new concepts :
+  1. __Node__ : Instane of docker engine connected to the SWARM.Nodes are either __managers__ or __workers__.Managers schhedules which container to run where.Worker Executes the tasks.By Default managers are also workers.
+  2. __Services__ : Service is a collecion of tasks executed by workers.E.G HTTP Server running as a Docker Container on three nodes.
+  3. __Load Balancing__ : Docker includes a LB to process all containers in the service.
+  
+  #### 18.1 Initialise Swarm Mode
+   Turn single host Docker host into a multi-host docker swarm mode.First node to initialise the SWARM mode becomes the manager.As new nodes join the cluster they can adjust their roles b/w managers or workers.Can have multiple managers in prodction for HA.
+    
+    > docker swarm --help
+    > docker swarm init
+  #### 18.2 Join CLuster
+   1. Obtain the ttoken required to add a worker to the cluster.Ask the manager what the token is via swarm join-token.In production this should be stored securely.
+    
+    > token=$(docker -H 172.17.0.33:2345 swarm join-token -q worker) && echo $token
+    > docker swarm join 172.17.0.33:2377 --token $token
+    > docker node ls     ( on the parent host )
+    
+  #### 18.3 
+   Create Overlay network.All containers registered to this network can communicate with each other regardless of which node they are deployed onto.
+    
+    > docker network create -d overlay skynet
+      
+   Step 2) deploy katacoda/docker-http-server with friendly name *http* which should attach to *skynet* network.Run two instances of the container across our cluster.Load Balance these two containers together on port 80.Sending HTTP request to any nodes will process the request by one of the containers within the cluster.The node which received the req might not be the one processing it.
+   
+    > docker service create --name http --network skynet --replicas 2 -p 80:80 katacoda/docker-http-server\
+    > docker service ls
+    > docker service ps http
+    > docker service inspect --pretty http
+    > docker node ps self
+    > docker service scale http=5
+    
+   
