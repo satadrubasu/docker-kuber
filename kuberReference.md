@@ -91,8 +91,38 @@ Once the Service Account has been created , the token to login can be found:
    
     > kubectl -n kube-sysem describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
    
+### 3. KUBECTL DEPLOYMENTS / REPLICATION CONTROLLERS and expose via SERVICES without YAML
+
+#### 3.1 kubectl run ( like docker run but at a cluster level )
+
+    > kubectl run http --image=katacoda/docker-http-server:latest --replicas=1
+    > kubectl get deployments
+    > kubectl describe deployment http
+    
+#### 3.2 kubectl expose ( create a service which exposes the PODS on a port )
+  This command to expose the container port 80 on the host 8000 binding to the external-ip of the host.
+  
+    > kubectl expose deployment http --external-ip="172.17.0.36" --port=8000 --target-port=80
+        OR
+    > kubectl run httpexposed --image=katacoda/docker-http-server:latest --replicas=1 --port=80 --hostport=8001
+       ( Under the covers this exposes the POD via Docker Port Mapping , so not listed as service when)
+    > kubectl get svc
+    > docker ps | grep httpexposed
  
-   
+#### 3.3 Scale Containers
+  use kubectl to scale the number of replicas.Scaling the deployment will request Kubernetes to launch additional Pods.These Pods can be automatically load balanced using the exposed service.Once each pod starts it will be added to the LB service.By describing the service we can view the endpoint and associated Pods
+  
+    > kubectl scale --replicas=3 deployment http
+    > kubectl get pods
+    > kubectl describe svc http
+    
+ ### 4. KUBECTL DEPLOYMENTS / REPLICATION CONTROLLERS and expose via SERVICES with YAML 
+    Most common object is the Kubernetes Deployment Object.It defines the container spec required,along with the name and labels used by other parts of Kubernetes to discover and connect to the application
+    
+    
+    
+  
+
   
   
   
