@@ -321,5 +321,46 @@ While nginx-proxy automatically creates and configures NGINX for us, if you're i
     > docker exec nginx cat /etc/nginx/conf.d/default.conf
     > docker logs nginx
      
+ ### 15.0 SCENARIO : ORCHESTRATION using DOCKER COMPOSE
+   Docker Compose is a tool to manage the orchestration of launching containers. It is based on a __docker-compose.yml__ file.
+    container_name:
+      property: value
+      - or options
+ #### 15.1 Defining First container
+   Node js Application requires connecting to Redis.docker-compose.yml file in same project location as the Dockerfile.
+   1. lets define a container called web based on the build of the current dir
+      ```
+       web:
+        build: .
+      ``` 
+   2. Docker Compose supports all of the properties which can be defined using docker run
+      ```
+      links:
+        - redis
+      ports:
+       -"3000"
+       -"8000"
+      ``` 
+   3. In last step we used Dockerfile in the current dir as the base of our container.In this step we want to use an existing image from Docker Hub as a second container.
+        ```
+        redis:
+        image: redis:alpine
+        volumes:
+         - /var/redis/data:/data
+        ```
+   4. Launch all applications with a single command of __up__
+      If we want to bring up a single container then __up <container-name>__
+      
+          > docker-compose up -d
  
+   5. Docker-Compose can also __SCALE__ number of containers  
+       
+         > docker-compose scale web=3
+         > docker-compose scale web=1
+         
+   6. Docker-compose __STOP__
+       
+          > docker-compose stop
+          > docker-compose rm
+          
 
