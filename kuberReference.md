@@ -126,59 +126,20 @@ Once the Service Account has been created , the token to login can be found:
      - Replication Controllers 
      - Services
      - Nodeports
+     
+##### 5.1.1 REDIS-MASTER-CONTROLLER.YAML
 
-#####FRONTEND-CONTROLLER.YAML
-``` 
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: frontend
-  labels:
-    name: frontend
-spec:
-  replicas: 3
-  selector:
-    name: frontend
-  template:
-    metadata:
-      labels:
-        name: frontend
-    spec:
-      containers:
-      - name: php-redis
-        image: gcr.io/google_samples/gb-frontend:v3
-        env:
-        - name: GET_HOSTS_FROM
-          value: dns
-          # If your cluster config does not include a dns service, then to
-          # instead access environment variables to find service host
-          # info, comment out the 'value: dns' line above, and uncomment the
-          # line below.
-          # value: env
-        ports:
-        - containerPort: 80
-   ```     
-#####FRONTEND-SERVICE.YAML
-```
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend
-  labels:
-    name: frontend
-spec:
-  # if your cluster supports it, uncomment the following to automatically create
-  # an external load-balanced IP for the frontend service.
-  # type: LoadBalancer
-  type: NodePort
-  ports:
-    # the port that this service should serve on
-    - port: 80
-      nodePort: 30080
-  selector:
-    name: frontend
-  ```
-#####REDIS-MASTER-CONTROLLER.YAML
+Start the Redis Master. A Kubernetes service deployment has, at least, two parts. 
+   i) __Replication controller__:
+     defines how many instances should be running, the Docker Image to use, and a name to identify the service.Additional options can be utilized for configuration and discovery.If Redis were to go down, the replication controller would restart it on an active node.
+     
+     > kubectl create -f redis-master-controller.yaml
+     > kubectl create -f redis-master-controller.yaml
+     > kubectl get pods
+     
+   ii) __Service__ :  A Kubernetes service is a __named load balancer__ that proxies traffic to one or more containers. The proxy works even if the containers are on different nodes.Services proxy communicate within the cluster and rarely expose ports to an outside interface.
+   A service looks like you cannot connect using curl or netcat unless you start it as part of Kubernetes. The recommended approach is to have a LoadBalancer service to handle external communications.
+
 ```
 apiVersion: v1
 kind: ReplicationController
@@ -200,9 +161,13 @@ spec:
         image: redis:3.0.7-alpine
         ports:
         - containerPort: 6379
-
   ```
-#####REDIS-MASTER-SERVICE.YAML
+##### 5.1.2 REDIS-MASTER-SERVICE.YAML
+
+    > kubectl create -f redis-master-service.yaml
+    > kubectl get services
+    > kubectl describe services redis-master
+    
 ```
 apiVersion: v1
 kind: Service
@@ -266,6 +231,59 @@ spec:
   selector:
     name: redis-slave
 ```
+
+#####FRONTEND-CONTROLLER.YAML
+``` 
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: frontend
+  labels:
+    name: frontend
+spec:
+  replicas: 3
+  selector:
+    name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      containers:
+      - name: php-redis
+        image: gcr.io/google_samples/gb-frontend:v3
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+          # If your cluster config does not include a dns service, then to
+          # instead access environment variables to find service host
+          # info, comment out the 'value: dns' line above, and uncomment the
+          # line below.
+          # value: env
+        ports:
+        - containerPort: 80
+   ```     
+#####FRONTEND-SERVICE.YAML
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    name: frontend
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  # type: LoadBalancer
+  type: NodePort
+  ports:
+    # the port that this service should serve on
+    - port: 80
+      nodePort: 30080
+  selector:
+    name: frontend
+  ```
+
   
   
   
