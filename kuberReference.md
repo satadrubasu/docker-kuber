@@ -117,12 +117,155 @@ Once the Service Account has been created , the token to login can be found:
     > kubectl describe svc http
     
  ### 4. KUBECTL DEPLOYMENTS / REPLICATION CONTROLLERS and expose via SERVICES with YAML 
-    Most common object is the Kubernetes Deployment Object.It defines the container spec required,along with the name and labels used by other parts of Kubernetes to discover and connect to the application
+   Most common object is the Kubernetes Deployment Object.It defines the container spec required,along with the name and labels used by other parts of Kubernetes to discover and connect to the application
     
     
-    
-  
+ #### 5. Scenario : Deploy Guestbook example on Kube
+   Store notes from guests in Redis via javascript API calls. Redis contains master ( for storage ) and a replicated set of redis *slaves*.Core concepts of following will be covered:
+     - Pods
+     - Replication Controllers 
+     - Services
+     - Nodeports
 
+#####FRONTEND-CONTROLLER.YAML
+``` 
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: frontend
+  labels:
+    name: frontend
+spec:
+  replicas: 3
+  selector:
+    name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      containers:
+      - name: php-redis
+        image: gcr.io/google_samples/gb-frontend:v3
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+          # If your cluster config does not include a dns service, then to
+          # instead access environment variables to find service host
+          # info, comment out the 'value: dns' line above, and uncomment the
+          # line below.
+          # value: env
+        ports:
+        - containerPort: 80
+   ```     
+#####FRONTEND-SERVICE.YAML
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    name: frontend
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  # type: LoadBalancer
+  type: NodePort
+  ports:
+    # the port that this service should serve on
+    - port: 80
+      nodePort: 30080
+  selector:
+    name: frontend
+  ```
+#####REDIS-MASTER-CONTROLLER.YAML
+```
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis-master
+  labels:
+    name: redis-master
+spec:
+  replicas: 1
+  selector:
+    name: redis-master
+  template:
+    metadata:
+      labels:
+        name: redis-master
+    spec:
+      containers:
+      - name: master
+        image: redis:3.0.7-alpine
+        ports:
+        - containerPort: 6379
+
+  ```
+#####REDIS-MASTER-SERVICE.YAML
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-master
+  labels:
+    name: redis-master
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 6379
+    targetPort: 6379
+  selector:
+    name: redis-master
+
+  ```
+#####REDIS-SLAVE-CONTROLLER.YAML
+```
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis-slave
+  labels:
+    name: redis-slave
+spec:
+  replicas: 2
+  selector:
+    name: redis-slave
+  template:
+    metadata:
+      labels:
+        name: redis-slave
+    spec:
+      containers:
+      - name: worker
+        image: gcr.io/google_samples/gb-redisslave:v1
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+          # If your cluster config does not include a dns service, then to
+          # instead access an environment variable to find the master
+          # service's host, comment out the 'value: dns' line above, and
+          # uncomment the line below.
+          # value: env
+        ports:
+        - containerPort: 6379
+
+```
+#####REDIS-SLAVE-SERVICE.YAML
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-slave
+  labels:
+    name: redis-slave
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 6379
+  selector:
+    name: redis-slave
+```
   
   
   
