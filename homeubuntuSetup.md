@@ -6,3 +6,6 @@ Post install of kubeadm and kubernetes on my local :
  ```   
  sudo swapoff -a
  ```
+2. Give Unique hostnames to node:
+ ``sudo hostnamectl set-hostname master-node``
+ 
