@@ -25,18 +25,31 @@ Other installations
   
   1. Login with docker credentials.Comes installed with __git__ and __docker__
   2. Install maven:
-       Action01 --> apk add maven
-  3. Install JDK ?
-       Action02 --> install jdk ? how ? document
+       ``apk add maven``
+  3. Install JDK :
+       ``apk add --no-cache openjdk8``
   
   Continue practicing by pulling images etc and use maven need be.
   
   **Reference commands:**
+  setupNode.sh
+  ```
+  #!/bin/bash
+  alias l='ls -lrt'
+  alias c='celar'
+  alias di='docker images'
+  alias dp='docker ps'
+  apk add maven
+  apk add --no-cache openjdk8
+  ```
+  
+  Other references for runtime
   ```
    docker pull satadrubasu/dockerplayground:latest
    docker run -d -p 8091:8091 satadrubasu/dockerplayground:latest
    curl http://node1:8091
   ```
+  
   
    
   
