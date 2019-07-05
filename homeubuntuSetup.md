@@ -49,7 +49,8 @@ git clone https://github.com/satadrubasu/boot_docker_PropService.git
   Other references for runtime
   ```
    docker pull satadrubasu/dockerplayground:latest
-   docker run -d -p 8091:8091 satadrubasu/dockerplayground:latest
+   docker run -d --name propService01 -p 8091:8091 satadrubasu/dockerplayground:latest
+   docker inspect propService01
    curl http://node1:8091
   ```
   
