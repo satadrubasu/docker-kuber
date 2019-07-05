@@ -46,14 +46,21 @@ cd gitrepo
 git clone https://github.com/satadrubasu/boot_docker_PropService.git
 ```
   
-  Other references for runtime
-  ```
-   docker pull satadrubasu/dockerplayground:latest
-   docker run -d --name propService01 -p 8091:8091 satadrubasu/dockerplayground:latest
-   docker inspect propService01
-   curl http://node1:8091
-  ```
-  
+Other references for runtime
+```
+ docker pull satadrubasu/dockerplayground:latest
+ docker run -d --name propService -p 8091:8091 satadrubasu/dockerplayground:latest
+ docker inspect propService
+ curl http://node1:8091
+```
+To execute commands inside the container use __exec__ on the container name
+```
+ docker exec propService <commmand>
+ docker exec propService ls /usr
+```
+
+
+
   
    
   
