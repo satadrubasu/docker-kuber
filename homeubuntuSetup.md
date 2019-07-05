@@ -22,9 +22,13 @@ Other installations
 
 
 ========== Working on labs.play-with-docker.com ===========
-Login with docker credentials
-Comes installed with git and docker
-#Action01 --> install maven with command:
+  Login with docker credentials
+  Comes installed with git and docker
+  
+  In case we need to use maven clean install by pulling from 
+  Action01 --> install maven with command:
              apk add maven
-             
+  Action02 --> install jdk ?
+  
+  
 Continue practicing by pulling images etc and use maven need be.
