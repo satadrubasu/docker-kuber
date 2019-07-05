@@ -33,15 +33,18 @@ Other installations
   
   **Reference commands:**
   setupNode.sh
-  ```
-  #!/bin/bash
-  alias l='ls -lrt'
-  alias c='celar'
-  alias di='docker images'
-  alias dp='docker ps'
-  apk add maven
-  apk add --no-cache openjdk8
-  ```
+```
+#!/bin/bash
+alias l='ls -lrt'
+alias c='clear'
+alias di='docker images'
+alias dp='docker ps'
+apk add maven
+apk add --no-cache openjdk8
+mkdir gitrepo
+cd gitrepo
+git clone https://github.com/satadrubasu/boot_docker_PropService.git
+```
   
   Other references for runtime
   ```
