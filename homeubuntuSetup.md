@@ -21,14 +21,25 @@ Other installations
 2. Virtualbox - 6 : https://tecadmin.net/install-virtualbox-on-ubuntu-18-04/
 
 
-========== Working on labs.play-with-docker.com ===========
-  Login with docker credentials
-  Comes installed with git and docker
+## Working on labs.play-with-docker.com
   
-  In case we need to use maven clean install by pulling from 
-  Action01 --> install maven with command:
-             apk add maven
-  Action02 --> install jdk ?
+  1. Login with docker credentials.Comes installed with __git__ and __docker__
+  2. Install maven:
+       Action01 --> apk add maven
+  3. Install JDK ?
+       Action02 --> install jdk ? how ? document
+  
+  Continue practicing by pulling images etc and use maven need be.
+  
+  **Reference commands:**
+  ```
+   docker pull satadrubasu/dockerplayground:latest
+   docker run -d -p 8091:8091 satadrubasu/dockerplayground:latest
+   curl http://node1:8091
+  ```
+  
+   
   
   
-Continue practicing by pulling images etc and use maven need be.
+  
+
