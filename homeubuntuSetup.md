@@ -20,3 +20,11 @@ Other installations
 
 2. Virtualbox - 6 : https://tecadmin.net/install-virtualbox-on-ubuntu-18-04/
 
+
+========== Working on labs.play-with-docker.com ===========
+Login with docker credentials
+Comes installed with git and docker
+#Action01 --> install maven with command:
+             apk add maven
+             
+Continue practicing by pulling images etc and use maven need be.
