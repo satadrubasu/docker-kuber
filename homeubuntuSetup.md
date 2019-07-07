@@ -21,7 +21,7 @@ Other installations
 2. Virtualbox - 6 : https://tecadmin.net/install-virtualbox-on-ubuntu-18-04/
 
 
-## Working on labs.play-with-docker.com
+## Working on https://labs.play-with-docker.com
   
   1. Login with docker credentials.Comes installed with __git__ and __docker__
   2. Install maven:
