@@ -46,7 +46,8 @@ apk add --no-cache openjdk8
 mkdir gitrepo
 cd gitrepo
 git clone https://github.com/satadrubasu/boot_docker_PropService.git
-
+cd boot_docker_PropService
+mvn clean install
 ```
   
 Other references for runtime
