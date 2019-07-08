@@ -39,18 +39,24 @@ alias l='ls -lrt'
 alias c='clear'
 alias di='docker images'
 alias dp='docker ps'
+mkdir /hostlogs
+chmod 777 /hostlogs
 apk add maven
 apk add --no-cache openjdk8
 mkdir gitrepo
 cd gitrepo
 git clone https://github.com/satadrubasu/boot_docker_PropService.git
+
 ```
   
 Other references for runtime
 ```
+ docker build -t satadrubasu/dockerplayground:1.0 .
+ docker run -d --name prop01 -v /hostlogs:/mountedPropServiceLogs -p 8091:8091 satadrubasu/dockerplayground:1.0
+ 
  docker pull satadrubasu/dockerplayground:latest
  docker run -d --name propService -p 8091:8091 satadrubasu/dockerplayground:latest
- docker inspect propService
+  docker inspect propService
  curl http://node1:8091
 ```
 To execute commands inside the container use __exec__ on the container name
