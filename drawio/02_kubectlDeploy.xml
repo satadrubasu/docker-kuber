@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile modified="2019-08-06T12:24:49.376Z" host="www.draw.io" agent="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36" etag="h6iuSfbfNUV9u2NDcYzo" version="11.1.2" type="device" compressed="false">
+  <diagram name="Page-1" id="fbcf5db9-b524-4cd4-e4f3-379dc89c3999">
+    <mxGraphModel dx="1449" dy="328" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="2a0f93b5c73ef8e7-1" value="" style="line;strokeWidth=10;direction=south;html=1;fillColor=none;fontSize=13;fontColor=#000000;align=center;strokeColor=#AE4132;" parent="1" vertex="1">
+          <mxGeometry x="360" y="70" width="10" height="550" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="2a0f93b5c73ef8e7-2" target="EZly6czL165JEKDRB5td-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-2" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#F2931E;fontSize=13;fontColor=#FFFFFF;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="170" y="80" width="270" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-2" value="&lt;font&gt;&lt;span style=&quot;font-size: 9px ; color: rgba(0 , 0 , 0 , 0.87) ; font-family: &amp;#34;franklingoturwtotbooregular&amp;#34; , sans-serif ; white-space: normal ; background-color: rgb(255 , 255 , 255)&quot;&gt;1) launch a deployment called&amp;nbsp;&lt;/span&gt;&lt;em style=&quot;font-size: 9px ; box-sizing: inherit ; color: rgba(0 , 0 , 0 , 0.87) ; font-family: &amp;#34;franklingoturwtotbooregular&amp;#34; , sans-serif ; white-space: normal ; background-color: rgb(255 , 255 , 255)&quot;&gt;http&lt;/em&gt;&lt;span style=&quot;font-size: 9px ; color: rgba(0 , 0 , 0 , 0.87) ; font-family: &amp;#34;franklingoturwtotbooregular&amp;#34; , sans-serif ; white-space: normal ; background-color: rgb(255 , 255 , 255)&quot;&gt;&amp;nbsp;which starts a container based on the Docker Image&lt;/span&gt;&lt;span style=&quot;box-sizing: inherit ; color: rgba(0 , 0 , 0 , 0.87) ; font-family: &amp;#34;franklingoturwtotbooregular&amp;#34; , sans-serif ; white-space: normal ; background-color: rgb(255 , 255 , 255)&quot;&gt;&lt;br&gt;&lt;font style=&quot;font-style: italic ; font-size: 9px&quot;&gt;&amp;gt;&amp;nbsp; kubectl run http --image=kc/docker-http-server:latest --replicas=1&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; style=&quot;font-size: 9px ; font-style: italic&quot;&gt;2)&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 9px&quot;&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;view the status of the deployments &amp;amp; describe the deployment :&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;i style=&quot;font-size: 9px&quot;&gt;&amp;nbsp;&amp;gt; kubectl get deployments&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size: 9px&quot;&gt;&amp;gt; kubectl describe deployment http&lt;/i&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#FFFFFF;fontSize=13;fontColor=#000000;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="-160" y="97.5" width="290" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-3" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="179" y="104.5" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" edge="1" parent="1" source="2a0f93b5c73ef8e7-4" target="EZly6czL165JEKDRB5td-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-4" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#10739E;fontSize=13;fontColor=#FFFFFF;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="250" width="260" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-4" value="&lt;span style=&quot;font-size: 10px&quot;&gt;1. Expose the container port 80 on the host 8000 binding to the external-ip of the host.&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 9px&quot;&gt;&amp;gt; kubectl expose deployment http --external-ip=&quot;172.17.0.6&quot;&lt;br&gt;&amp;gt; curl http://172.17.0.6:8000&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#FFFFFF;fontSize=13;fontColor=#000000;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="257.5" width="260" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-5" value="2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="350" y="283" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" edge="1" parent="1" source="2a0f93b5c73ef8e7-6" target="EZly6czL165JEKDRB5td-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-6" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#F2931E;fontSize=13;fontColor=#FFFFFF;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="170" y="360" width="310" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-6" value="&lt;font style=&quot;font-size: 10px&quot;&gt;kubectl run httpexposed --image=katacoda/docker-http-server:latest --replicas=1 --port=80 --hostport=8001&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#FFFFFF;fontSize=13;fontColor=#000000;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="-170" y="372.5" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-7" value="3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="180" y="393" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" edge="1" parent="1" source="2a0f93b5c73ef8e7-8" target="EZly6czL165JEKDRB5td-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-8" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#10739E;fontSize=13;fontColor=#FFFFFF;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="475" width="260" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-8" value="&lt;font style=&quot;font-size: 9px&quot;&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp; 1. kubectl scale --replicas=3 deployment http&lt;/span&gt;&lt;br&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp; 2. kubectl get pods&lt;/span&gt;&lt;br&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp; 3. kubectl describe svc http&lt;br&gt;&lt;/span&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;font color=&quot;#00cc00&quot;&gt;Name:&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;http&lt;/font&gt;&lt;span&gt;&lt;br&gt;&lt;/span&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Namespace:&amp;nbsp; default&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Labels:&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; run=http&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Annotations:&amp;nbsp; &amp;lt;none&amp;gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Selector:&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;run=http&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Type:&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;ClusterIP&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;IP:&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;10.100.41.73&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;External IPs:&amp;nbsp; 172.17.0.6&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Port:&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;lt;unset&amp;gt;&amp;nbsp; 8000/TCP&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;TargetPort:&amp;nbsp; &amp;nbsp; &amp;nbsp;80/TCP&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Endpoints:&amp;nbsp; &amp;nbsp; &amp;nbsp; 172.18.0.4:80,172.18.0.6:80,172.18.0.7:80&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font color=&quot;#00cc00&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Session Affinity:&amp;nbsp; None&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 4. curl http://172.17.0.6:8000&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#FFFFFF;fontSize=13;fontColor=#000000;align=left;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="412.5" width="260" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-9" value="4" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="350" y="508" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-11" value="5" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="180" y="623" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-18" value="&lt;h1&gt;Kubectl Run&lt;/h1&gt;&lt;p&gt;&#39;run&#39; command creates a deployment based on the parameters specified - image or replicas. Issues deployment to kubernetes master which launches the Pods and containers required.&lt;br&gt;&lt;br&gt;kubectl run &amp;lt;name of deployment&amp;gt; &amp;lt;properties&amp;gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=4;fillColor=none;gradientColor=#007FFF;fontSize=9;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="219" y="86" width="181" height="124" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-19" value="&lt;h1&gt;Kubectl Expose&lt;/h1&gt;&lt;p&gt;Create a SERVICE which exposes the Pods on a particular port.&lt;br&gt;Expose the newly deployed http deployment.Allows different parameters of the service&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=4;fillColor=none;gradientColor=#007FFF;fontSize=9;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="380" y="254" width="200" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-20" value="&lt;h1&gt;Kubectl Run and Expose&lt;/h1&gt;&lt;p&gt;&#39;run&#39; and &#39;expose&#39; in a single command. Under covers, this exposes the Pod via Docker Port Mapping, hence will not see the service listed using &lt;i&gt;kubectl get svc&lt;/i&gt;&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=4;fillColor=none;gradientColor=#007FFF;fontSize=9;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="220" y="364" width="240" height="77" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-21" value="&lt;h1&gt;Scale Containers&lt;/h1&gt;&lt;p&gt;Scaling the deployment will request Kubernetes to launch additional Pods.These Pods will then &lt;b&gt;&lt;i&gt;automatically be load-balanced using exposed service&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=4;fillColor=none;gradientColor=#007FFF;fontSize=9;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="390" y="479" width="190" height="77" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-1" value="&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 19px&quot;&gt;Start containers using kubectl&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="110" y="40" width="430" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
