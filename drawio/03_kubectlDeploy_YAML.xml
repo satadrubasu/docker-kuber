@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile modified="2019-08-06T13:07:23.040Z" host="www.draw.io" agent="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36" etag="5uk31w9QUKvXcZfjwl5o" version="11.1.2" type="device" compressed="false">
+  <diagram name="Page-1" id="fbcf5db9-b524-4cd4-e4f3-379dc89c3999">
+    <mxGraphModel dx="1449" dy="328" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="2a0f93b5c73ef8e7-1" value="" style="line;strokeWidth=10;direction=south;html=1;fillColor=none;fontSize=13;fontColor=#000000;align=center;strokeColor=#AE4132;" parent="1" vertex="1">
+          <mxGeometry x="360" y="70" width="10" height="480" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="2a0f93b5c73ef8e7-2" target="EZly6czL165JEKDRB5td-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-2" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#F2931E;fontSize=13;fontColor=#FFFFFF;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="170" y="80" width="270" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-2" value="&lt;font face=&quot;franklingoturwtotbooregular, sans-serif&quot; style=&quot;font-size: 9px&quot;&gt;&lt;span style=&quot;box-sizing: inherit ; background-color: rgb(255 , 255 , 255)&quot;&gt;&lt;div&gt;&lt;b&gt;&lt;u&gt;deployment.yaml&lt;br&gt;&lt;/u&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#007fff&quot;&gt;apiVersion: extensions/v1beta1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;kind: Deployment&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;metadata:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; name: webapp1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;spec:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; replicas: 1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; template:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; metadata:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; labels:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; app: webapp1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; spec:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; containers:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; - name: webapp1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; image: katacoda/docker-http-server:latest&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ports:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; - containerPort: 80&lt;/font&gt;&lt;/div&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#FFFFFF;fontSize=13;fontColor=#000000;align=left;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="98" width="210" height="192" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-3" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="170" y="104.5" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" edge="1" parent="1" source="2a0f93b5c73ef8e7-4" target="EZly6czL165JEKDRB5td-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-4" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#10739E;fontSize=13;fontColor=#FFFFFF;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="250" width="290" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-4" value="&lt;font style=&quot;font-size: 9px&quot;&gt;&lt;div&gt;&amp;nbsp;&lt;b&gt;&lt;u&gt;service.yaml&lt;br&gt;&lt;/u&gt;&lt;/b&gt;&lt;br&gt;&amp;nbsp;&lt;font color=&quot;#007fff&quot;&gt;apiVersion: v1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; kind: Service&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; metadata:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; name: webapp1-svc&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; labels:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; app: webapp1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; spec:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; type: NodePort&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; ports:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;- port: 80&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;nodePort: 30080&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; selector:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#007fff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;app: webapp1&lt;/font&gt;&lt;/div&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#FFFFFF;fontSize=13;fontColor=#000000;align=left;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="232" width="140" height="165" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-5" value="2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="315" y="263" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" edge="1" parent="1" source="2a0f93b5c73ef8e7-6" target="EZly6czL165JEKDRB5td-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-6" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#F2931E;fontSize=13;fontColor=#FFFFFF;align=center;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="175" y="394" width="310" height="106" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-6" value="&lt;font style=&quot;font-size: 9px&quot;&gt;&amp;gt; kubectl apply -f deployment.yaml&lt;br&gt;&amp;gt; kubectl get deployment&lt;br&gt;&amp;gt; kubectl get pods&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=1;fillColor=#FFFFFF;fontSize=13;fontColor=#000000;align=left;gradientColor=none;gradientDirection=east;verticalAlign=top;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="-67" y="417" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-7" value="3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="173" y="408" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-11" value="5" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=30;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="180" y="623" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-18" value="&lt;h1&gt;Create Deployement&lt;/h1&gt;&lt;p&gt;The Deployment Object:&lt;br&gt;defines container spec required &amp;amp; the name and labels used by K8s to discover and connect to the application.&lt;br&gt;&lt;br&gt;&amp;gt; kubectl create -f deployment.yaml&lt;br&gt;&amp;gt; kubectl get deployment&lt;br&gt;&amp;gt; kubectl describe deployment webapp1&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=4;fillColor=none;gradientColor=#007FFF;fontSize=9;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="200" y="86" width="230" height="124" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-19" value="&lt;h1&gt;Create Service&lt;/h1&gt;&lt;p&gt;Service leverage n/w capabilities for communications b/w applications and create automatic load-balance on scale.&amp;nbsp;&lt;br&gt;Service selects all applications with label &lt;i&gt;webapp1 &lt;/i&gt;and makes the application available via a &lt;i&gt;NodePort.&lt;br&gt;&amp;gt; kubectl create -f service.yaml&lt;br&gt;&amp;gt; kubectl describe svc webapp1-svc&lt;br&gt;&amp;gt; curl host01:30080&lt;/i&gt;&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=4;fillColor=none;gradientColor=#007FFF;fontSize=9;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="340" y="257" width="245" height="113" as="geometry"/>
+        </mxCell>
+        <mxCell id="2a0f93b5c73ef8e7-20" value="&lt;h1&gt;Scale Deployment&lt;/h1&gt;&lt;p&gt;Details of YAML change configurations per environment and should be maintained as infra-as-code in&amp;nbsp; version control.&lt;br&gt;Update deployment.yaml file to increase instances.( replicas: 4)&lt;/p&gt;" style="text;html=1;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;strokeColor=none;strokeWidth=4;fillColor=none;gradientColor=#007FFF;fontSize=9;fontColor=#FFFFFF;align=center;" parent="1" vertex="1">
+          <mxGeometry x="220" y="398" width="240" height="102" as="geometry"/>
+        </mxCell>
+        <mxCell id="EZly6czL165JEKDRB5td-1" value="&lt;font color=&quot;#3399ff&quot;&gt;&lt;span style=&quot;font-size: 19px&quot;&gt;YAML Deployments of containers&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="110" y="40" width="430" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
