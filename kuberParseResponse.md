@@ -30,8 +30,6 @@ Printing colons and using tr to convert colons to newlines
  > kubectl get no -o jsonpath="{range.items[?(@.spec.unschedulable)]}{.metadata.name}:{end}" | tr ":" "\n"  
 
 
-
-
 ## 2 Kinds  
 
 
@@ -48,7 +46,7 @@ Printing colons and using tr to convert colons to newlines
 
  items[*].metadata.status  
  items[*].metadata.status.addresses[]  
-    {  
+  ```  {  
     "address":"192.168.200.3",  
     "type":"ExternalIP"  
     },  
@@ -60,7 +58,7 @@ Printing colons and using tr to convert colons to newlines
     "address":"svi-tb18-master-1",  
     "type":"Hostname"  
     }  
-
+```
 items[*].status.allocatable.cpu  
 items[*].status.allocatable.ephemeral-storage  
 items[*].status.allocatable.memory  
@@ -80,7 +78,7 @@ items[*].status.nodeInfo.kubeletVersion
 items[*].status.nodeInfo.architecture  
 items[*].status.nodeInfo.containerRuntimeVersion    
 items[*].status.conditions[]  
-
+   ```
 
 {  
 "lastHeartbeatTime":"2020-05-20T16:44:34Z",  
@@ -90,35 +88,47 @@ items[*].status.conditions[]
 "status":"False",  
 "type":"NetworkUnavailable"  
 },  
-{  
-"lastHeartbeatTime":"2020-06-10T16:29:36Z",  
-"lastTransitionTime":"2020-05-20T14:50:34Z",  
+{    
 "message":"kubelet has sufficient memory available",  
 "reason":"KubeletHasSufficientMemory",  
 "status":"False",  
 "type":"MemoryPressure"  
 },  
 {  
-"lastHeartbeatTime":"2020-06-10T16:29:36Z",  
-"lastTransitionTime":"2020-05-20T14:50:34Z",  
+ 
 "message":"kubelet has no disk pressure",  
 "reason":"KubeletHasNoDiskPressure",  
 "status":"False",  
 "type":"DiskPressure"  
 },  
 {  
-"lastHeartbeatTime":"2020-06-10T16:29:36Z",  
-"lastTransitionTime":"2020-05-20T14:50:34Z",  
+ 
 "message":"kubelet has sufficient PID available",  
 "reason":"KubeletHasSufficientPID",  
 "status":"False",  
 "type":"PIDPressure"  
 },  
-{  
-"lastHeartbeatTime":"2020-06-10T16:29:36Z",  
-"lastTransitionTime":"2020-05-20T16:44:41Z",  
-"message":"kubelet is posting ready status. AppArmor enabled",  
-"reason":"KubeletReady",  
-"status":"True",  
-"type":"Ready"  
-}  
+  {  
+ 
+   "message":"kubelet is posting ready status. AppArmor enabled",  
+    "reason":"KubeletReady",  
+   "status":"True",  
+   "type":"Ready"  
+  }  
+```
+
+## Command references :
+
+#### Get ExternalIPs of all nodes  
+ >  kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="ExternalIP")].address}'  
+ 
+#### List pods Sorted by Restart Count  
+ >  kubectl get pods --sort-by='.status.containerStatuses[0].restartCount'  
+
+#### Get the version label of all pods with label app=cassandra  
+ >  kubectl get pods --selector=app=cassandra rc -o jsonpath='{.items[*].metadata.labels.version}'  
+ 
+#### Check which nodes are ready  
+ ``` JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}' \  
+ && kubectl get nodes -o jsonpath=$JSONPATH | grep "Ready=True"
+ ```
