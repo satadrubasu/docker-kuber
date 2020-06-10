@@ -129,6 +129,8 @@ items[*].status.conditions[]
  >  kubectl get pods --selector=app=cassandra rc -o jsonpath='{.items[*].metadata.labels.version}'  
  
 #### Check which nodes are ready  
- ``` JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}' \  
+
+ ``` 
+ JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}' \  
  && kubectl get nodes -o jsonpath=$JSONPATH | grep "Ready=True"
  ```
