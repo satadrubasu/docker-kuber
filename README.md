@@ -21,8 +21,18 @@ https://jsonpathfinder.com/
 
 ### Print Custom Columns
    
-  Print custom columns [Node]  
-   >  kubectl get no -A -o=custom-columns=NAME:.metadata.name,CPU:.status.allocatable.cpu
+  Print custom columns [Node]    
+   >  kubectl get no -A -o=custom-columns=NAME:.metadata.name,CPU:.status.allocatable.cpu 
    
- Service :
-   >  kubectl get svc -A -o=custom-columns=Pod-Name:.metadata.name,Cluster-IP:spec.clusterIP
+ Service :  
+   >  kubectl get svc -A -o=custom-columns=Pod-Name:.metadata.name,Cluster-IP:spec.clusterIP 
+   
+### Search with jsonpath and print chosen column for search result  
+
+Search Criteria :  
+  items[].metadata.name=="kube-dns"  
+
+Field to retrieve value for matching search :  
+  items[].spec.clusterIP   
+
+  > kubectl get svc -n kube-system -o=jsonpath='{.items[?(@.metadata.name=="kube-dns")].spec.clusterIP}'  
