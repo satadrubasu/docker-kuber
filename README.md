@@ -36,3 +36,7 @@ Field to retrieve value for matching search :
   items[].spec.clusterIP   
 
   > kubectl get svc -n kube-system -o=jsonpath='{.items[?(@.metadata.name=="kube-dns")].spec.clusterIP}'  
+  
+### Display pods by age in ascending order
+
+   > kubectl get pods --sort-by={metadata.creationTimestamp}
