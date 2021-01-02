@@ -31,9 +31,7 @@
      
    - Add the K8s apt repo into local repo  
      ``` 
-     cat <<EOF > /etc/apt/sources.list.d/kubernetes.list
-     deb https://apt.lubernetes.io/ kubernetes-xenial main
-     EOF
+     sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
      ```
 
    - Refresh the system repo with details updated and GPG key configured  
@@ -56,6 +54,13 @@
      sudo apt-get hold -y docker.io kubelet kubeadm kubectl    
      ```
      
+   - In case of Ubuntu 20.10 
+       curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+       Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+       
+      
+
+
    - Check the system status of the container runtime / kubelet ( which enters a crashbackloop until its joined)     
         systemd[1]: kubelet.service: Failed with result 'exit-code'.
 
@@ -65,7 +70,7 @@
      ```
      
 
-   - Ensure both are set to start at system startup  
+   - Ensure both are set to start at system startup
       ```
       sudo systemctl enable kubelet.service  
       sudo systemctl enable docker.service
