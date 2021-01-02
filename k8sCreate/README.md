@@ -53,6 +53,9 @@
      ```
      sudo apt-get install -y docker.io kubelet kubeadm kubectl  
      sudo apt-get hold -y docker.io kubelet kubeadm kubectl    
+       OR    
+     apt-mark hold docker.io kubelet kubeadm kubectl    
+     apt-mark showhold    
      ```
      
    - In case of Ubuntu 20.10 
