@@ -11,8 +11,9 @@
 - kubelet  
 - kubeadm  
 - kubectl  
-- Container Runtime ( Docker)
-
+- Container Runtime ( Docker)  
+  ** show current installed package version **   
+   >  apt list kubelet
 
 ## Getting and installing K8S on ubuntu VMs ( DO on All Nodes )
 
