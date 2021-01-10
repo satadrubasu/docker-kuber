@@ -1,0 +1,76 @@
+###################       SUCCESS     SCENARIO         ###################
+#### Removed all existing /etc/kubernetes/* files to remove prior entries of old deployment #####
+
+
+
+
+
+###################### FAILED SCENARIO ###################
+sudo] password for satadru:
+[init] Using Kubernetes version: v1.20.1
+[preflight] Running pre-flight checks
+	[WARNING Port-10259]: Port 10259 is in use
+	[WARNING Port-10257]: Port 10257 is in use
+	[WARNING FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml]: /etc/kubernetes/manifests/kube-apiserver.yaml already exists
+	[WARNING FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml]: /etc/kubernetes/manifests/kube-controller-manager.yaml already exists
+	[WARNING FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml]: /etc/kubernetes/manifests/kube-scheduler.yaml already exists
+	[WARNING FileAvailable--etc-kubernetes-manifests-etcd.yaml]: /etc/kubernetes/manifests/etcd.yaml already exists
+	[WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup driver. The recommended driver is "systemd". Please follow the guide at https://kubernetes.io/docs/setup/cri/
+	[WARNING Port-10250]: Port 10250 is in use
+	[WARNING DirAvailable--var-lib-etcd]: /var/lib/etcd is not empty
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[certs] Using certificateDir folder "/etc/kubernetes/pki"
+[certs] Using existing ca certificate authority
+[certs] Using existing apiserver certificate and key on disk
+[certs] Using existing apiserver-kubelet-client certificate and key on disk
+[certs] Using existing front-proxy-ca certificate authority
+[certs] Using existing front-proxy-client certificate and key on disk
+[certs] Using existing etcd/ca certificate authority
+[certs] Using existing etcd/server certificate and key on disk
+[certs] Using existing etcd/peer certificate and key on disk
+[certs] Using existing etcd/healthcheck-client certificate and key on disk
+[certs] Using existing apiserver-etcd-client certificate and key on disk
+[certs] Using the existing "sa" key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+W0110 21:34:32.731746  661752 kubeconfig.go:246] a kubeconfig file "/etc/kubernetes/admin.conf" exists already but has an unexpected API Server URL: expected: https://192.168.1.11:6443, got: https://192.168.0.107:6443
+[kubeconfig] Using existing kubeconfig file: "/etc/kubernetes/admin.conf"
+W0110 21:34:32.953161  661752 kubeconfig.go:246] a kubeconfig file "/etc/kubernetes/kubelet.conf" exists already but has an unexpected API Server URL: expected: https://192.168.1.11:6443, got: https://192.168.0.107:6443
+[kubeconfig] Using existing kubeconfig file: "/etc/kubernetes/kubelet.conf"
+W0110 21:34:33.151968  661752 kubeconfig.go:246] a kubeconfig file "/etc/kubernetes/controller-manager.conf" exists already but has an unexpected API Server URL: expected: https://192.168.1.11:6443, got: https://192.168.0.107:6443
+[kubeconfig] Using existing kubeconfig file: "/etc/kubernetes/controller-manager.conf"
+W0110 21:34:33.284788  661752 kubeconfig.go:246] a kubeconfig file "/etc/kubernetes/scheduler.conf" exists already but has an unexpected API Server URL: expected: https://192.168.1.11:6443, got: https://192.168.0.107:6443
+[kubeconfig] Using existing kubeconfig file: "/etc/kubernetes/scheduler.conf"
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Starting the kubelet
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[kubelet-check] Initial timeout of 40s passed.
+
+	Unfortunately, an error has occurred:
+		timed out waiting for the condition
+
+	This error is likely caused by:
+		- The kubelet is not running
+		- The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
+
+	If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
+		- 'systemctl status kubelet'
+		- 'journalctl -xeu kubelet'
+
+	Additionally, a control plane component may have crashed or exited when started by the container runtime.
+	To troubleshoot, list all containers using your preferred container runtimes CLI.
+
+	Here is one example how you may list all Kubernetes containers running in docker:
+		- 'docker ps -a | grep kube | grep -v pause'
+		Once you have found the failing container, you can inspect its logs with:
+		- 'docker logs CONTAINERID'
+
+error execution phase wait-control-plane: couldn't initialize a Kubernetes cluster
+To see the stack trace of this error execute with --v=5 or higher

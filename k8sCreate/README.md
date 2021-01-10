@@ -7,48 +7,77 @@
 4) Join additional Nodes as workers  
 
 
-### Required packages  to be installed on all NODES
-- kubelet  
-- kubeadm  
-- kubectl  
-- Container Runtime ( Docker)  
-  ** show current installed package version **   
-   >  apt list kubelet
 
 ## Getting and installing K8S on ubuntu VMs ( DO on All Nodes )
 
+| NodeType | hostname | IP | OS | ARCH | RAM | Processor |
+|---|---|---|---|---|---|---|
+|Master|satWS|192.168.1.5|Ubuntu 20.02.1 LTS|x86-64| 8 GB| Intel® Core™ i5-7200U CPU @ 2.50GHz × 4 |
+|Worker|wrasp|192.168.1.11|Ubuntu 20.10|arm64| 8 GB| Raspberry Pi 4 ModelB rev 1.4 | 
+
+** Some Handy Commands to check hardware :
+  |1
 
 ### [Step-0] Setup all nodes with hosts file entry
    
 
-### [Step-1] Master Node Setup with packages
+### [Step-1] Linux host Steps  
+   - Disable Firewall  
+      > ufw disable  
+
    - Diable Swap  
-      > swapoff -a
-   - edit the fstab removing any entry for swap partitions and ReBOOT
-      > vi /etc/fstab
+      > swapoff -a  
+   - edit the fstab removing any entry for swap partitions and ReBOOT 
+      > vi /etc/fstab   OR  swapoff -a; sed -i '/swap/d' /etc/fstab
+
+   - Update sysctl settings for Kubernetes networking  
+     ```
+     cat >>/etc/sysctl.d/kubernetes.conf<<EOF
+     net.bridge.bridge-nf-call-ip6tables = 1
+     net.bridge.bridge-nf-call-iptables = 1
+     EOF
+     sysctl --system
+     ```
+### [Step 2a] COntainer ( Docker Enginer Setup  )
+```
+ {  
+  apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common  
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  
+  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"  
+  apt update  
+  apt install -y docker-ce=5:19.03.10~3-0~ubuntu-focal containerd.io  
+  } 
+```
+
+### [Step-2b] K8S Setup 
+- kubelet  
+- kubeadm  
+- kubectl  
+- Container Runtime ( Docker)  
+  ** show current installed package version **  
+   >  apt list kubelet
+
+- Add Googles apt repo gpg key  
+   > curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -  
      
-   - Add Googles apt repo gpg key  
-      > curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-     
-   - Add the K8s apt repo into local repo  
+- Add the K8s apt repo into local repo  
      ``` 
      sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+      OR
+     echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
      ```
 
-   - Refresh the system repo with details updated and GPG key configured  
-       ```
+- Refresh the system repo with details updated and GPG key configured    
+       
+     ```
        sudo apt-get update
        apt-cache policy kubelet | head -n 20  # see which versions available
        apt-cache policy docker.io | head -n 20  
-       ```
-   - Install the required packages and __HOLD__ to prevent autoupdate
-     
-     | Pkg1 |   
-     |---|  
-     |kubelet| 
-     |kubeadm|
-     |kubectl|
-     |docker.io|
+     ```
+- Install the required packages and __HOLD__ to prevent autoupdate  
+
+     > i)  kubelet ii) 1.2 kubeadm   iii) kubectl   
+     > iv) docker.io ( container )
      
      ```
      sudo apt-get install -y docker.io kubelet kubeadm kubectl  
@@ -57,14 +86,13 @@
      apt-mark hold docker.io kubelet kubeadm kubectl    
      apt-mark showhold    
      ```
-     
+    For Specific Versions :
+     > sudo apt update && apt install -y kubeadm=1.18.5-00 kubelet=1.18.5-00 kubectl=1.18.5-00
+
    - In case of Ubuntu 20.10 
        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
        Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
-       
-      
-
-
+     
    - Check the system status of the container runtime / kubelet ( which enters a crashbackloop until its joined)     
         systemd[1]: kubelet.service: Failed with result 'exit-code'.
 
@@ -72,14 +100,15 @@
      sudo systemctl status kubelet.service  
      sudo systemctl status docker.service
      ```
-     
-
+    
    - Ensure both are set to start at system startup
       ```
       sudo systemctl enable kubelet.service  
       sudo systemctl enable docker.service
       ```  
-### [Step-2]  Bootstrapping the cluster with *kubeadm*  
+     
+
+### [Theory of kubeadm internals ]  Bootstrapping the cluster with *kubeadm*  
   customizable with params , but the default flow as below
 
  | Phase | Details | 
@@ -143,29 +172,37 @@
 ### [Step-3] Creating the master
 
   Download some yaml MANIFESTS that will describe the pod network. ( Find the latest working for the following two)
+Initialize
  
- 1. Following describes the security needed to deploy our pod network :   
-  > wget https://docs.projectcalico.org/archive/v3.3/kubernetes/installation/hosted/rbac-kdd.yaml
+ 1. Update the below command with the ip address of kmaster   
+  > kubeadm init --apiserver-advertise-address=192.168.1.11 --pod-network-cidr=192.168.25.0/16  --ignore-preflight-errors=all
 
- 2. Following describer the actual POD network : 
-  > wget https://docs.projectcalico.org/archive/v3.3/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml 
- 
+ 2. Deploy the Calico Network   
+  > kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml 
+   * Adjust the calico.yaml for the CIDR as per chosen subnet
+   * refer to the repo calico.yaml checked in  
 
- 3. Defined the CIDR with kubeadm ( make sure updated in above files as well ) 
-   
-  Adjust the calico.yaml for the CIDR as per chosen subnet
-  > vi calico.yaml  
-  > kubeadm init --pod-network-cidr=192.168.0.0/16  
-  > kubectl apply -f rbac-kdd.yaml  
-  > kubectl apply -f calico.yaml  
+ 3. Cluster join command   
+   >  kubeadm token create --print-join-command  
 
-  ```
-   * understand TLS bootstrapping
-  ```
-4. Configure the master with current account to have admin access on the API server as a non priviledged account.  
-  
+4. To be able to run kubectl commands as non-root current user    
    ```
     mkdir -p $HOME/.kube  
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config  
     sudo chown $(id -u):$(id -g) $HOME/.kube/config  
    ```
+
+  ```
+  understand TLS bootstrapping
+  ```
+### [Step-4] Creating the Workers
+
+ - Join the cluster  ( Use the output from kubeadm token create command in previous step from the master server )
+
+   Sample Outputwhen kubeadm init of master:  
+   ```
+    
+   ``` 
+ - Verify the nodes and components status  
+   >  kubectl get nodes
+   >  kubectl get cs
