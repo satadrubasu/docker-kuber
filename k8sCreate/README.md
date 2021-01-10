@@ -143,6 +143,9 @@
  
 
  3. Defined the CIDR with kubeadm ( make sure updated in above files as well ) 
+   
+  Adjust the calico.yaml for the CIDR as per chosen subnet
+  > vi calico.yaml  
   > kubeadm init --pod-network-cidr=192.168.0.0/16  
   > kubectl apply -f rbac-kdd.yaml  
   > kubectl apply -f calico.yaml  
@@ -150,5 +153,10 @@
   ```
    * understand TLS bootstrapping
   ```
-
+4. Configure the master with current account to have admin access on the API server as a non priviledged account.  
   
+   ```
+    mkdir -p $HOME/.kube  
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config  
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config  
+   ```
