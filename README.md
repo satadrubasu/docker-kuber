@@ -1,6 +1,12 @@
 # docker-kuber
 https://jsonpathfinder.com/
 
+1. Which kubernetes context:  
+
+   > kubectl config current-context
+   > kubectl get nodes -o wide  
+   > kubectl describe node <nodename> | more
+
 ###  List of containers inside a pod:   
     > kubectl get pods [pod-name-here] -n [namespace] -o jsonpath='{.spec.containers[*].name}'
 
