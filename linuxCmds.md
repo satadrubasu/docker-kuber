@@ -48,5 +48,7 @@ use ss command with -t and -a flags to list all TCP sockets. This displays both 
 To display only TCP connections with state established:  
  > ss -a -t -o state established  
  
-### 6. 
+### 6. ls-topo  
+  lstopo, lstopo-no-graphics - Show the topology of the system (note that hwloc-bind(1) provides a detailed explanation of the hwloc system; it should be read before reading this man page).  
+  
 ### 7. 
