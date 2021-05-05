@@ -3,10 +3,10 @@
 
 
 ### 1. ip command  
-ip link
-ip route 
-ip --help
-ip address
+ip link  
+ip route   
+ip --help  
+ip address   
 
 
 ### 2. traceroute
