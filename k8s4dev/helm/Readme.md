@@ -1,4 +1,7 @@
 
+### Old Version of helm via brew on MAC 
+ https://zoltanaltfatter.com/2017/09/07/Install-a-specific-version-of-formula-with-homebrew/  
+ 
 
 ###  Install helm on the host machine ()  
 
