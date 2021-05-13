@@ -1,0 +1,39 @@
+
+
+###### TCPDUMP ######
+which tcpdump
+
+
+##  to see which interfaces are available for capture:
+tcpdump --list-interfaces (or -D for short) 
+sudo tcpdump -D
+
+#### Capture dump #### 
+tcpdump --interface any
+
+#### limit the number of packets captured and stop tcpdump, use the -c (for count) option: 
+tcpdump -i any -c 25
+
+#### DISABLE auto resolution of IP (-n) /port (-nn)
+tcpdump -i any -c5 -nn
+
+#### PROTOCOL filter ( e.g icmp )
+tcpdump -i any -c5 icmp
+
+####  PORT filter
+tcpdump -i any -c5 -nn port 80
+
+#### SRC IP/Hostname filter
+tcpdump -i any -c5 -nn src 192.168.122.98
+
+#### Write to file  
+tcpdump -i any -c10 -nn -w webserver.pcap port 80
+tcpdump -i any -c10 -nn -w ssh.pcap port 22
+
+
+#### Read from pcap file
+tcpdump -nn -r webserver.pcap
+
+
+
+scp -P 2222 root@10.81.68.191:/root/helmOutput .
