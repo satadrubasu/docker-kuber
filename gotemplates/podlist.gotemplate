@@ -1,0 +1,9 @@
+{{- range .items -}}
+    POD: {{.metadata.name}}
+    NODE: {{.spec.nodeName}}
+    PHASE: {{.status.phase}}
+    VOLUMES: {{range .spec.volumes -}}
+                {{.name}}{{" "}}
+             {{- end -}}
+             {{"\n"}}
+{{- end -}}
