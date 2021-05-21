@@ -1,0 +1,11 @@
+{{- range .items -}}
+    Service: {{.metadata.name}}
+     {{range .spec.ports -}}
+        {{- if eq .name "ssh" -}}
+            {{"\n"}} Name:   {{.name}}{{" "}}
+             Port:   {{.port}}{{" "}}
+             TargetPort:   {{.targetPort}}{{" "}}
+        {{- end -}}
+     {{"\n"}}
+     {{- end -}}
+{{- end -}}
